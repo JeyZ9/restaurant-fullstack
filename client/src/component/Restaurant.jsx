@@ -4,7 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Restaurant = (props) => {
-  const { restaurants, setEdit, setPopup } = props;
+  const { restaurants, setEdit, setPopup, getRestaurants } = props;
 
   console.log(restaurants);
 
@@ -31,6 +31,7 @@ const Restaurant = (props) => {
       const response = await axios.delete(
         `http://localhost:5000/api/v1/restaurants/${id}`
       );
+      getRestaurants();
       return response.data;
     }
   };

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router';
 
 const Navbar = (props) => {
   const { setPopup } = props;
@@ -6,7 +7,7 @@ const Navbar = (props) => {
     {
       id: 1,
       name: "Add restaurant",
-      url: "/",
+      url: "/add-restaurant",
     },
     {
       id: 2,
@@ -54,9 +55,9 @@ const Navbar = (props) => {
             {menuItems.map((item) => (
               <ul key={item.id}>
                 <li>
-                  <button onClick={() => handleOnClick(item.id)}>
+                  <Link to={item.url} onClick={() => handleOnClick(item.id)}>
                     {item.name}
-                  </button>
+                  </Link>
                 </li>
               </ul>
             ))}
@@ -69,9 +70,9 @@ const Navbar = (props) => {
           {menuItems.map((item) => (
             <ul key={item.id} className="flex gap-2">
               <li>
-                <button onClick={() => handleOnClick(item.id)}>
+                <Link to={item.id} onClick={() => handleOnClick(item.id)}>
                   {item.name}
-                </button>
+                </Link>
               </li>
             </ul>
           ))}

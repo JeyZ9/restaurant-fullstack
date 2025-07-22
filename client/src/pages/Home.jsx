@@ -39,7 +39,7 @@ const Home = () => {
 
   useEffect(() => {
     getRestaurants();
-  }, []);
+  }, [popup]);
 
   const handleSearch = (keyword) => {
 
@@ -116,7 +116,7 @@ const Home = () => {
       )}
 
       {/* Result */}
-      <Restaurant restaurants={filRestaurants} setPopup={setPopup} />
+      <Restaurant restaurants={filRestaurants} setPopup={setPopup} getRestaurants={getRestaurants} />
     </div>
   );
 }

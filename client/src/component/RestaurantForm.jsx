@@ -34,19 +34,19 @@ const RestaurantForm = (props) => {
       getById(id);
   }, [id])
 
-  const hanbleOnClick = () => {
+  const hanbleOnClick = async() => {
     if(id !== undefined) {
       updateRestaurant(id, restaurant);
     }else{
       addRestaurant(restaurant);
     }
-    getRestaurants();
     setPopup(false);
     setRestaurant({
       title: "",
       type: "",
       img: "",
     });
+    await getRestaurants();
   }
 
   const hanblechange = (e) => {
@@ -94,7 +94,8 @@ const RestaurantForm = (props) => {
         />
 
         <div className="grid grid-cols-2 gap-2 justify-between mt-4">
-          <button
+          <Link
+            to={`/`}
             className="btn btn-error btn-outline w-full"
             onClick={() => {
               setPopup(false);
@@ -106,15 +107,15 @@ const RestaurantForm = (props) => {
             }}
           >
             cancel
-          </button>
-          <button
-            // to={`/`}
+          </Link>
+          <Link
+            to={`/`}
             type="submit"
             onClick={hanbleOnClick}
             className="btn btn-accent w-full text-white"
           >
             {id ? "Update" : "Add"}
-          </button>
+          </Link>
         </div>
       </fieldset>
     </>
